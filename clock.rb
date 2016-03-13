@@ -10,9 +10,4 @@ class Clock
     @minute * num
   end
 
-  def run
-    puts "I will wait here a while, go do your thing!"
-    sleep
-  end
-
 end

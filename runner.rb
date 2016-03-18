@@ -26,10 +26,10 @@ def results
       result_hash[:count] += 1
     end
   end
-  play_percent = (result_hash[:play]/result_hash[:count]) * 100
-  procrastination_percent = (result_hash[:procrastination]/result_hash[:count]) * 100
-  work_percent = (result_hash[:work]/result_hash[:count]) * 100
-  puts "Play: #{play_percent}% \nProcrastination: #{procrastination_percent}% \nWork: #{work_percent}%"
+  play_percent = (result_hash[:play].to_f/result_hash[:count].to_f) * 100
+  procrastination_percent = (result_hash[:procrastination].to_f/result_hash[:count].to_f) * 100
+  work_percent = (result_hash[:work].to_f/result_hash[:count].to_f) * 100
+  puts "Play: #{play_percent.round(2)}% \nProcrastination: #{procrastination_percent.round(2)}% \nWork: #{work_percent.round(2)}%"
   menu
 end
 
@@ -75,7 +75,8 @@ def menu
   end
 end
 
-
+#-----------------------------------
+# Actual Program
 puts "Welcome to your time tracker!"
 sleep 0.5
 menu

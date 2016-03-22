@@ -1,6 +1,8 @@
 # running code
 require 'csv'
+require 'date'
 
+#---------------------------
 
 def results
   puts "this will have the results"
@@ -12,8 +14,8 @@ def results
     work: 0,
     count: 0
   }
-  csv_output.each do |item|
-    case item
+  csv_output.each_with_index do |value, index|
+    case value
     when "play"
       result_hash[:play] += 1
     when "procrastination"
@@ -22,13 +24,29 @@ def results
       result_hash[:work] += 1
     else
       result_hash[:count] += 1
+      if Date.parse(value) == Date.today
+        case csv_output[index+1]
+        when "play"
+          result_hash[:today][:play] += 1
+        when "procrastination"
+          result_hash[:today][:procrastination] += 1
+        when "working"
+          result_hash[:today][:work] += 1
+        else
+          puts "There seems to be an error in your CSV file"
+      end
     end
   end
   play_percent = (result_hash[:play].to_f/result_hash[:count].to_f) * 100
   procrastination_percent = (result_hash[:procrastination].to_f/result_hash[:count].to_f) * 100
   work_percent = (result_hash[:work].to_f/result_hash[:count].to_f) * 100
+  play_change = ((result_hash[:today][:play].to_f/result_hash[:today][:count].to_f) * 100) - play_percent
+  procrastination_change = ((result_hash[:today][:procrastination].to_f/result_hash[:today][:count].to_f) * 100) - procrastination_change
+  work_change = ((result_hash[:today][:work].to_f/result_hash[:today][:count].to_f) * 100) - work_percent
   puts "Play: #{play_percent.round(2)}% \nProcrastination: #{procrastination_percent.round(2)}% \nWork: #{work_percent.round(2)}%"
 end
+
+#--------------------------
 
 def data_input
   done = false
@@ -53,10 +71,12 @@ def data_input
       puts "that is not a valid response"
     end
     file = File.open("data.csv","a")
-    file.write(",#{Time.now},#{data}") if data
+    file.write(",#{Date.today},#{data}") if data #Time.now if using time
     file.close
   end
 end
+
+#-------------------------------
 
 def menu
   done = false

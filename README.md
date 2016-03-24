@@ -31,7 +31,7 @@ ruby runner.rb
   - ** from the menu: **
   - input "2" to indicate you'd like to view your results
   
-  ![image of command line with the output "Welcome to your time tracker! What would you like to do? Choices: 1 for Input, 2 for Results, 3 for Quit.". The line below shows the user input as "2" next to the cursor](imgs/menu-to-results.png)
+    ![image of command line with the output "Welcome to your time tracker! What would you like to do? Choices: 1 for Input, 2 for Results, 3 for Quit.". The line below shows the user input as "2" next to the cursor](imgs/menu-to-results.png)
   - the results will display. The percent change is in reference to the current day. It will default back to the main menu after results are calculated.
   
     ![image of command line with the output "Here are your results Play: 20.69%  (-20.69% change today) Procrastination: 37.93%  (-30.24% change today) Work: 41.38% (50.93% change today) What would you like to do? Choices: 1 for Input, 2 for Results, 3 for Quit.

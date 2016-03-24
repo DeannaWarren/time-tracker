@@ -24,7 +24,8 @@ ruby runner.rb
   - Go about your life. After 5 minutes, the program will use your computers sound to say "Hello" and alert you that it is ready to recieve your imput. **NOTE:** Input will create a data.csv if one is not present. User is not responsible for the creation of this file, however, deletion of the file or it's contents will remove your result data.
   ![image of command line with the output "I'm going to go take a nap, check in with you in a few! What are you doing? Choices: 1 for 'play', 2 for 'procrastination', 3 for 'work', 4 for 'No Data'". The line below is ready for input](imgs/input-menu.png)
   - After you input data, it will ask if you would like to continue.
-  ![image of command line with output "Would you like to continue? 1 for yes, 2 for no" The line below is ready for input.](imgs/input-end.png)
+  
+    ![image of command line with output "Would you like to continue? 1 for yes, 2 for no" The line below is ready for input.](imgs/input-end.png)
   - If you continue, it will repeat, waiting another 5 minutes before alerting you for more input. If not, it will pass you back to the menu. 
 - View Results
   - ** from the menu: **

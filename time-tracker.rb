@@ -12,12 +12,12 @@ class TimeTracker
     until done
       puts "What would you like to do?"
       puts "Choices: 1 for Input, 2 for Results, 3 for Quit."
-      case gets.chomp
-      when "1"
+      case gets#.chomp
+      when "1\n"
         self.data_input
-      when "2"
+      when "2\n"
         self.results
-      when "3" || "exit"
+      when "3\n" || "exit\n"
         done = true
       else
         puts "That wasn't a valid option, sorry!"
@@ -30,10 +30,10 @@ class TimeTracker
     done = false
     until done
       puts "I'm going to go take a nap, check in with you in a few!"
-      sleep (5 * 60)
+      # sleep (5 * 60)
       system("say hello")
       puts "What are you doing?"
-      puts "Choices: 1 for PLAY, 2 for PROCRASTINATION, 3 for WORKING, 4 for GO AWAY AND COME BACK LATER, 5 for PLEASE STOP"
+      puts "Choices: 1 for 'play', 2 for 'procrastination', 3 for 'work', 4 for 'No Data'"
       case gets.chomp
       when "1"
         data = "play"
@@ -43,8 +43,6 @@ class TimeTracker
         data = "working"
       when "4"
         puts "Ok! I won't take any data this time."
-      when "5" || "exit"
-        done = true
       else
         puts "that is not a valid response"
       end
@@ -53,11 +51,15 @@ class TimeTracker
         file.write(",#{Date.today},#{data}")
         file.close
       end
+      puts "Would you like to continue? 1 for yes, 2 for no"
+      if gets.chomp == "2"
+        done = true
+      end
     end
   end
 
   def results
-    puts "this will have the results"
+    puts "Here are your results"
     csv_output = CSV.read("data.csv")
     if csv_output[0] == nil
       puts "There are no results!"
